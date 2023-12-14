@@ -3,7 +3,7 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 5601;
+const port = 5000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -21,6 +21,10 @@ app.post('/pipe', async (req, res) => {
     console.error(`Error: ${error.message}`);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
+app.get('/', (req, res) => {
+  res.send('home');
 });
 
 app.listen(port, () => {

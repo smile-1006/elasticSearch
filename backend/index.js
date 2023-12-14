@@ -3,11 +3,11 @@ const { Client } = require('@elastic/elasticsearch');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 5601;
+const port = 3000;
 
 // Elasticsearch client
 const client = new Client({ node: 'http://localhost:5601' });
-const indexName = 'myelkfirst';
+const indexName = 'aicte';
 
 // Middleware to parse JSON request body
 app.use(bodyParser.json());
@@ -75,6 +75,10 @@ app.get('/autocomplete', async (req, res) => {
     console.error(`Error: ${error.message}`);
     res.status(500).json({ error: 'Internal server error' });
   }
+});
+
+app.get('/', (req, res) => {
+  res.send('home');
 });
 
 // Start the server
